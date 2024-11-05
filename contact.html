@@ -1,0 +1,111 @@
+`<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="shortcut icon" href="./img/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Junge&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="head__wrap">
+            <div class="head">
+                <a href="./index.html" class="head__logo">
+                    <img src="./img/monument.svg" alt="monument">
+                    Peterburg Pearls
+                </a>
+                <div class="head__links">
+                    <a class="head__link" href="./index.html">Главная страница</a>
+                    <a class="head__link" href="./memorials.html">Достопримечательности</a>
+                    <a class="head__link" href="./contact.html">Контакты</a>
+                </div>
+                <button class="head__burger head__burger1">
+                    <img class="head__burger-img" src="./img/burger.svg" alt="burger">
+                </button>
+            </div>
+        </div>
+        <div class="burger burger1">
+            <div class="burger__main">
+                <button class="burger__close">&#10006;</button>
+                <a class="burger__link" href="./index.html">Главная страница</a>
+                <a class="burger__link" href="./memorials.html">Достопримечательности</a>
+                <a class="burger__link" href="./contact.html">Контакты</a>
+            </div>
+        </div>
+    </header>
+    <!-- Основной контент -->
+    <main class="main">
+        <div class="top">
+            <h1 class="top__title">Контакты</h1>
+        </div>
+        <section class="section">
+            <div class="section__welcome">
+                <h1 class="section__title">Мы поможем вам раскрыть все загадки города!</h1>
+                <p class="section__text">Наша команда экспертов готова ответить на любые ваши вопросы о Северной столице. Мы с радостью поделимся с вами своими знаниями о истории, культуре, достопримечательностях и лучших местах для отдыха в Санкт-Петербурге.</p>
+                <button class="section__button section__button1">Связаться с нами</button>
+            </div>
+            <div class="section__links">
+                <h1 class="section__title">Часы работы:</h1>
+                <p class="section__time">ПН: 9:00 - 17:00 <br>
+                    ВТ: 9:00 - 17:00 <br>
+                    СР: 9:00 - 17:00 <br>
+                    ЧТ: 9:00 - 17:00 <br>
+                    ПТ: 9:00 - 17:00 <br>
+                    СБ: 10:00 - 16:00 <br>
+                    ВС: 10:00 - 16:00
+                </p>
+            </div>
+        </section>
+        <div class="contact">
+            <div class="contact__left">
+                <h1 class="contact__title">Контакты:</h1>
+                <p class="contact__text">
+                    Телефон: +7(999)999-9999 <br>
+                    Email: xxxxxx@email.com <br>
+                    Адрес: Россия, Ленинградская область, г. Санкт-Петербург <br>
+                    Социальные сети: vk.com/xxxxxx
+                </p>
+                <h1 class="contact__title">Местоположение:</h1>
+                <iframe class="map" src="https://yandex.ru/map-widget/v1/?um=constructor%3Af4818ef7f96aae6e66c4c49af908e5ead7d702d3f93b871159df7101924511ee&amp;source=constructor" width="610" height="333" style="border-radius: 12px;" frameborder="0"></iframe>
+            </div>
+            <div class="contact__right">
+                <img class="contact__img" src="./img/town.png" alt="town">
+            </div>
+        </div>
+        <div class="modal modal1">
+            <div class="modal__main">
+                <button class="modal__close">&#10006;</button>
+                <div class="modal__message">
+                    <img class="modal__message-img" src="./img/acc.svg" alt="acc">
+                    <div class="modal__message-text">
+                        <h1 class="modal__title">Тех. Поддержка</h1>
+                        <p class="modal__text">Здравствуйте! Рады, что вы выбрали наши услуги. Спасибо, что обратились в нашу службу поддержки. Мы рады помочь вам с вашей проблемой.</p>
+                    </div>
+                </div>
+                <h2 class="modal__error">Вы не можете отправлять сообщения, служба тех. поддержки сейчас не с сети</h2>
+                <div class="modal__send">
+                    <p class="modal__send-text">Введите сообщение</p>
+                    <img class="modal__send-img" src="./img/send.svg" alt="send">
+                </div>
+            </div>
+          </div>
+    </main>
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <p class="footer__text">Copyright © 2023 Peterburg Pearls. Все права защищены.</p>
+            <div class="footer__links">
+                <a class="footer__link" href="./contact.html">Контакты</a>
+                <a class="footer__link" href="#">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="./js/modal.js"></script>
+<script src="./js/burger.js"></script>
+</html>
