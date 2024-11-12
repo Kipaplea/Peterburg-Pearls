@@ -11,6 +11,11 @@ a, button{
     cursor: pointer;
 }
 
+input{
+    all: unset;
+    cursor: text;
+}
+
 
 .head{
     position: relative;
@@ -304,6 +309,40 @@ a, button{
                 margin-bottom: 70px;
             }
         }
+    }
+}
+
+.select{
+    display: flex;
+    justify-content: center;
+    gap: 245px;
+    margin-bottom: 75px;
+
+    &__filter{
+        display: flex;
+        gap: 75px;
+        
+        &-link{
+            font-size: 32px;
+            font-weight: 500;
+            border-top: 5px solid #00000000;
+            border-bottom: 5px solid #00000000;
+            transition: all 0.3s;
+    
+            &:hover{
+                border-bottom: 2px solid #000000;
+            }
+        }
+    }
+
+    &__search{
+        display: block;
+        background-color: #E4E4E4;
+        border: 3px solid #797676;
+        padding: 7px 20px;
+        font-size: 24px;
+        width: 250px;
+        border-radius: 10px;
     }
 }
 

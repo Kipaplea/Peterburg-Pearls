@@ -11,6 +11,11 @@ a, button {
   cursor: pointer;
 }
 
+input {
+  all: unset;
+  cursor: text;
+}
+
 .head {
   position: relative;
   padding: 25px 75px 25px 75px;
@@ -328,6 +333,36 @@ a, button {
     margin-top: -135px;
     margin-bottom: 70px;
   }
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  gap: 245px;
+  margin-bottom: 75px;
+}
+.select__filter {
+  display: flex;
+  gap: 75px;
+}
+.select__filter-link {
+  font-size: 32px;
+  font-weight: 500;
+  border-top: 5px solid rgba(0, 0, 0, 0);
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  transition: all 0.3s;
+}
+.select__filter-link:hover {
+  border-bottom: 2px solid #000000;
+}
+.select__search {
+  display: block;
+  background-color: #E4E4E4;
+  border: 3px solid #797676;
+  padding: 7px 20px;
+  font-size: 24px;
+  width: 250px;
+  border-radius: 10px;
 }
 
 .content {
