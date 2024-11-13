@@ -317,10 +317,15 @@ input{
     justify-content: center;
     gap: 245px;
     margin-bottom: 75px;
+    @media(max-width: 910px) {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
 
     &__filter{
         display: flex;
         gap: 75px;
+        justify-content: center;
         
         &-link{
             font-size: 32px;
@@ -328,6 +333,7 @@ input{
             border-top: 5px solid #00000000;
             border-bottom: 5px solid #00000000;
             transition: all 0.3s;
+            cursor: pointer;
     
             &:hover{
                 border-bottom: 2px solid #000000;
@@ -343,6 +349,11 @@ input{
         font-size: 24px;
         width: 250px;
         border-radius: 10px;
+        
+
+        @media(max-width: 910px) {
+            margin: 0 auto;
+        }
     }
 }
 
@@ -373,10 +384,11 @@ input{
     }
 
     &-item{
-        margin-bottom: 40px;
+        margin-top: 40px;
         transition: all 0.3s;
+        height: 650px;
         &:hover{
-            margin-top: -10px;
+            margin-top: 30px;
         }
     }
 
@@ -444,6 +456,12 @@ input{
     display: flex;
     justify-content: center;
     }
+
+    &__none{
+        font-size: 64px;
+        font-weight: 300;
+        padding-bottom: 100px;
+    }
 }
 
 .footer{
@@ -451,6 +469,7 @@ input{
     justify-content: center;
     background-color: #302219;
     color: #E4E4E4;
+    margin-top: 100px;
     
     &__wrap{
         display: flex;
