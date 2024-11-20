@@ -409,7 +409,7 @@ input {
   .content-items {
     grid-template-columns: 376px;
     grid-template-rows: auto;
-    gap: 0;
+    gap: 80px;
   }
 }
 .content-item {
@@ -419,6 +419,11 @@ input {
 }
 .content-item:hover {
   margin-top: 30px;
+}
+@media (max-width: 1340px) {
+  .content-item:hover {
+    margin-top: 40px;
+  }
 }
 .content__img {
   width: 376px;
@@ -467,6 +472,12 @@ input {
 .content__link:hover {
   background-color: #000000;
   color: #DCDBDB;
+}
+@media (max-width: 1340px) {
+  .content__link {
+    background-color: #000000;
+    color: #DCDBDB;
+  }
 }
 .content-group {
   display: none;
