@@ -324,7 +324,7 @@ input {
 @media (max-width: 700px) {
   .main__link {
     padding: 6px 30px;
-    font-size: 16px;
+    font-size: 23px;
     margin-left: 10px;
   }
 }
@@ -341,16 +341,23 @@ input {
   gap: 245px;
   margin-bottom: 75px;
 }
-@media (max-width: 910px) {
+@media (max-width: 1060px) {
   .select {
     flex-direction: column-reverse;
     gap: 40px;
+    margin-top: 50px;
+    align-items: center;
   }
 }
 .select__filter {
   display: flex;
   gap: 75px;
   justify-content: center;
+}
+@media (max-width: 520px) {
+  .select__filter {
+    gap: 40px;
+  }
 }
 .select__filter-link {
   font-size: 32px;
@@ -363,6 +370,11 @@ input {
 .select__filter-link:hover {
   border-bottom: 2px solid #000000;
 }
+@media (max-width: 520px) {
+  .select__filter-link {
+    font-size: 28px;
+  }
+}
 .select__search {
   display: block;
   background-color: #E4E4E4;
@@ -371,11 +383,6 @@ input {
   font-size: 24px;
   width: 250px;
   border-radius: 10px;
-}
-@media (max-width: 910px) {
-  .select__search {
-    margin: 0 auto;
-  }
 }
 
 .content {
@@ -531,4 +538,24 @@ input {
   .footer__link {
     font-size: 14px;
   }
+}
+
+.pagination {
+  margin-top: 80px;
+}
+.pagination__button {
+  margin-left: 40px;
+  text-align: center;
+  background-color: #d6d6d6;
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s;
+  border-radius: 15%;
+}
+.pagination__button:first-child {
+  margin-left: 0;
+}
+.pagination__button:hover {
+  background-color: #000000;
+  color: #d6d6d6;
 }/*# sourceMappingURL=memorials.css.map */

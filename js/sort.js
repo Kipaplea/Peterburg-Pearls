@@ -24,3 +24,17 @@ filterLinks.forEach(link => {
         });
     });
 });
+
+
+
+
+
+
+
+
+filterLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        // ... (other code)
+        handleSearchAndFilter(); // Call handleSearchAndFilter on filter change
+    });
+});

@@ -299,8 +299,9 @@ input{
         }
         @media (max-width: 700px) {
             padding: 6px 30px;
-            font-size: 16px;
+            font-size: 23px;
             margin-left: 10px;
+            // color: #c4733e
         }
 
         &s{
@@ -317,15 +318,20 @@ input{
     justify-content: center;
     gap: 245px;
     margin-bottom: 75px;
-    @media(max-width: 910px) {
+    @media(max-width: 1060px) {
         flex-direction: column-reverse;
         gap: 40px;
+        margin-top: 50px;
+        align-items: center;
     }
 
     &__filter{
         display: flex;
         gap: 75px;
         justify-content: center;
+        @media(max-width: 520px) {
+            gap: 40px;
+        }
         
         &-link{
             font-size: 32px;
@@ -337,6 +343,10 @@ input{
     
             &:hover{
                 border-bottom: 2px solid #000000;
+            }
+
+            @media(max-width: 520px) {
+                font-size: 28px;
             }
         }
     }
@@ -351,9 +361,9 @@ input{
         border-radius: 10px;
         
 
-        @media(max-width: 910px) {
-            margin: 0 auto;
-        }
+        // @media(max-width: 1060px) {
+        //     // margin: 0 auto;
+        // }
     }
 }
 
@@ -514,6 +524,31 @@ input{
         }
         @media (max-width: 430px) {
             font-size: 14px;
+        }
+    }
+}
+
+
+.pagination{
+    margin-top: 80px;
+
+    &__button{
+        margin-left: 40px;
+
+        text-align: center;
+        background-color: #d6d6d6;
+        width: 30px;
+        height: 30px;
+        transition: all 0.2s;
+        border-radius: 15%;
+
+        &:first-child{
+            margin-left: 0;
+        }
+
+        &:hover{
+            background-color: #000000;
+            color: #d6d6d6;
         }
     }
 }
