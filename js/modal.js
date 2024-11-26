@@ -7,6 +7,8 @@ const modalController = ({modal, btnOpen, btnClose, time = 300}) => {
       visibility: hidden;
       opacity: 0;
       transition: opacity ${time}ms ease-in-out;
+      position: fixed;
+      z-index: 10;
     `;
   
     const closeModal = event => {
@@ -45,10 +47,4 @@ const modalController = ({modal, btnOpen, btnClose, time = 300}) => {
     modal: '.modal1',
     btnOpen: '.section__button1',
     btnClose: '.modal__close',
-  });
-  
-  modalController({
-    modal: '.modal2',
-    btnOpen: '.section__button2',
-    btnClose: '.modal__close'
   });

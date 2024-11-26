@@ -1,84 +1,54 @@
-import { fetchData, res } from './api.js'
+import { fetchData, res } from './api.js';
 
-const list = document.querySelector('.content-items')
-const searchInput = document.querySelector('.select__search')
-const contentContainer = document.querySelector('.content')
-let noResultsMessageElement = null
+const list = document.querySelector('.content-items');
+const searchInput = document.querySelector('.select__search');
+const contentContainer = document.querySelector('.content');
+let noResultsMessageElement = null;
 
 searchInput.addEventListener('input', () => {
-	const searchTerm = searchInput.value.toLowerCase()
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredItems = Array.isArray(res) ? res.filter(item => item.title.toLowerCase().includes(searchTerm)) : [];
+    displayFilteredItems(filteredItems);
+});
 
-	if (Array.isArray(res)) {
-		const filteredItems = res.filter((item) => {
-			const title = item.title.toLowerCase()
-			return title.includes(searchTerm)
-		})
+export function displayFilteredItems(filteredItems) {
+    list.innerHTML = ''; 
 
-		displayFilteredItems(filteredItems)
-	}
-})
+    if (filteredItems.length === 0) {
+        displayNoResultsMessage();
+        return;
+    }
 
-function displayFilteredItems(filteredItems) {
-	list.innerHTML = ''
-	if (filteredItems.length === 0) {
-		displayNoResultsMessage()
-		return
-	} else {
-		list.style.display = 'grid'
-	}
-	if (noResultsMessageElement) {
-		noResultsMessageElement.remove()
-		noResultsMessageElement = null
-	}
-	filteredItems.forEach((item) => {
-		const itemElement = document.createElement('div')
-		itemElement.classList.add('content-item')
+    if (noResultsMessageElement) {
+        noResultsMessageElement.remove();
+        noResultsMessageElement = null;
+    }
 
-		const imgElement = document.createElement('img')
-		imgElement.classList.add('content__img')
-		imgElement.src = item.photo
-		imgElement.alt = item.title
-		itemElement.appendChild(imgElement)
+		list.style.display = 'grid'; 
 
-		const subDiv = document.createElement('div')
-		subDiv.classList.add('content__sub')
+    const contentHTML = filteredItems.map(item => `
+        <div class="content-item">
+            <img class="content__img" src="${item.photo}" alt="${item.title}">
+            <div class="content__sub">
+                <h2 class="content__title">${item.title}</h2>
+                <p class="content__text">${item.text}</p>
+                <p class="content__address">${item.address}</p>
+                <a class="content__link" href="#">Перейти</a>
+            </div>
+        </div>
+    `).join('');
 
-		const titleElement = document.createElement('h2')
-		titleElement.classList.add('content__title')
-		titleElement.textContent = item.title
-		subDiv.appendChild(titleElement)
-
-		const textElement = document.createElement('p')
-		textElement.classList.add('content__text')
-		textElement.textContent = item.text
-		subDiv.appendChild(textElement)
-
-		const addressElement = document.createElement('p')
-		addressElement.classList.add('content__address')
-		addressElement.textContent = item.address
-		subDiv.appendChild(addressElement)
-
-		const linkElement = document.createElement('a')
-		linkElement.classList.add('content__link')
-		linkElement.href = '#'
-		linkElement.textContent = 'Перейти'
-		subDiv.appendChild(linkElement)
-
-		itemElement.appendChild(subDiv)
-		list.appendChild(itemElement)
-	})
+    list.innerHTML = contentHTML;
 }
 
 function displayNoResultsMessage() {
-	if (!noResultsMessageElement) {
-		noResultsMessageElement = document.createElement('p')
-		noResultsMessageElement.classList.add('content__none')
-		noResultsMessageElement.textContent = 'Ничего не найдено'
-		noResultsMessageElement.style.display = 'block'
-
-		list.style.display = 'none'
-		contentContainer.appendChild(noResultsMessageElement)
-	}
+    if (!noResultsMessageElement) {
+        noResultsMessageElement = document.createElement('p');
+        noResultsMessageElement.classList.add('content__none');
+        noResultsMessageElement.textContent = 'Ничего не найдено';
+				list.style.display = 'none'
+        contentContainer.appendChild(noResultsMessageElement);
+    }
 }
 
-fetchData()
+fetchData();

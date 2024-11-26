@@ -1,31 +1,19 @@
-// const filterLinks = document.querySelectorAll('.select__filter-link');
-// const contentBlocks = document.querySelectorAll('.content-item');
+import { res } from './api.js';
+import { displayFilteredItems } from './search.js';
 
-// filterLinks.forEach(link => {
-//     link.addEventListener('click', (event) => {
-//         event.preventDefault();
+const categoriesBtns = document.querySelectorAll('.select__filter-link')
 
-//         const filterType = link.textContent.toLowerCase(); 
+categoriesBtns.forEach((btn) => {
+btn.addEventListener('click', (event) => {
+    const category = event.target.value
+    let filteredData
 
-//         contentBlocks.forEach(item => {
-//         const title = item.querySelector('.content__title')?.textContent.toLowerCase() || '';
-//         const subtitle = item.querySelector('.content__subtitle')?.textContent.toLowerCase() || '';
+    if (category === 'all') {
+    filteredData = res
+    } else {
+    filteredData = res.filter((item) => item.category === category)
+    }
 
-//         if (filterType === 'музеи') {
-//             item.style.display = (title.includes('музей') || subtitle.includes('музей')) ? 'block' : 'none';
-//         } else if (filterType === 'памятники') {
-//             item.style.display = (!title.includes('музей') && !subtitle.includes('музей')) ? 'block' : 'none';
-//         } else {
-//             item.style.display = 'block';
-//         }
-//         });
-//     });
-// });
-
-
-
-// filterLinks.forEach(link => {
-//     link.addEventListener('click', (event) => {
-//         handleSearchAndFilter();
-//     });
-// });
+    displayFilteredItems(filteredData)
+    })
+})

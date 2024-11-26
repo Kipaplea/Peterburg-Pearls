@@ -6,7 +6,6 @@ function showSlide(n) {
 		slide.style.display = 'none'
 	})
 	slides[n].style.display = 'block'
-	slider.style.transform = `translateX(0)`
 }
 
 function nextSlide() {
@@ -26,5 +25,3 @@ prevButton.addEventListener('click', prevSlide)
 nextButton.addEventListener('click', nextSlide)
 
 showSlide(0)
-
-// ----------------------------------------------------------------------
