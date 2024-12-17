@@ -1,18 +1,24 @@
 const list = document.querySelector('.content-items');
 const apiUrl = 'https://672b0d95976a834dd025652d.mockapi.io/Place-1';
-
-const mask = await document.querySelector('.mask');
+export let res = []
+const mask = document.querySelector('.mask');
 window.addEventListener('DOMContentLoaded', () => {
     mask.classList.add('active');
 });
 
-async function fetchData() {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    displayItems(data);
+export async function fetchData() {
+    try{
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        displayItems(data);
+    } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+    } finally {
+        mask.classList.replace('active', 'hide');
+    }
 }
 
-async function displayItems(data) {
+export async function displayItems(data) {
     list.innerHTML = '';
     let contentHTML = "";
 
@@ -30,7 +36,10 @@ async function displayItems(data) {
         `;
     });
     list.innerHTML = contentHTML;
-    mask.classList.replace('active', 'hide');
 }
 
 fetchData();
+
+
+
+
