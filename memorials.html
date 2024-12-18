@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Junge&display=swap" rel="stylesheet"/>
 	</head>
 	<body>
-		<div class="mask">
+		<div class="mask active">
 			<div class="loader"></div>
 		</div>
 		<header class="header">
@@ -70,7 +70,14 @@
 					<button class="select__filter-link categories" value="музей">Музеи</button>
 					<button class="select__filter-link categories" value="памятник">Памятники</button>
 				</div>
-				<input type="text" class="select__search" placeholder="Введите для поиска..."/>
+				<div class="content__links" id="sort">
+					<button class="content__link">По Алфавиту (А-Я)</button>
+					<button class="content__link">По Алфавиту (Я-А)</button>
+				</div>
+				<div class="select__search">
+					<img class="select__search-img" src="./img/sort.svg" alt="sort" id="sort-open">
+					<input type="text" class="select__search-input" placeholder="Введите для поиска..."/>
+				</div>
 			</div>
 			<article class="content">
 				<section class="content-items">
@@ -113,8 +120,9 @@
 		<script type="module" src="./js/pagi.js"></script>
 
 		<script type="module" src="./js/search.js"></script>
-		<script type="module" src="./js/sort.js"></script>
+		<script type="module" src="./js/filter.js"></script>
 
+		<script type="module" src="./js/sort.js"></script>
 		<script type="module" src="./js/burger.js"></script>
 		<script type="module" src="./js/rates.js"></script>
 	</body>

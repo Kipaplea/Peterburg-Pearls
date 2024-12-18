@@ -1,46 +1,109 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const popularItems = document.querySelector('.popular-items');
-    const popular = document.querySelector('.popular');
-    const itemsPerPage = 2;
-    let currentPage = 0;
+    const popularItems = document.querySelector('.popular-items'); // Контейнер для элементов
+    const popular = document.querySelector('.popular'); // Родительский элемент
+    const itemsPerPage = 2; // Количество элементов на первой странице
+    const loadMoreCount = 2; // Количество элементов для загрузки при нажатии "Показать ещё"
+    let currentPage = 1; // Текущая страница
+    let totalItems = 0; // Общее количество элементов
+    let isLoading = false; // Флаг для предотвращения множественных запросов
 
-    const data = await fetch('https://672b0d95976a834dd025652d.mockapi.io/Place-1').then(res => res.json());
-    
-    popularItems.innerHTML = data.map(item => `
-        <div class="popular-item" style="display: none;">
-            <img class="popular__img" src="${item.photo}" alt="${item.title}">
-            <div class="popular__sub">
-                <h2 class="popular__title">${item.title}</h2>
-                <p class="popular__text">${item.text}</p>
-                <p class="popular__address">${item.address}</p>                
-                <a class="popular__link" href="#">Перейти</a>
-            </div>
-        </div>
-    `).join('');
+    const mask = document.querySelector('.mask'); // Лоадер
 
-    const items = popularItems.querySelectorAll('.popular-item');
-    const totalPages = Math.ceil(items.length / itemsPerPage);
-
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-    popular.append(paginationContainer);
-
-    for (let i = 0; i < totalPages; i++) {
-        const button = document.createElement('button');
-        button.classList.add('pagination__button');
-        button.textContent = i + 1;
-        button.addEventListener('click', () => {
-            currentPage = i;
-            showPage(currentPage);
-        });
-        paginationContainer.append(button);
+    // Функция для загрузки данных с сервера
+    async function fetchData() {
+        const url = `https://672b0d95976a834dd025652d.mockapi.io/Place-1`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
     }
 
-    const showPage = (page) => {
-        items.forEach((item, index) => {
-            item.style.display = (index >= page * itemsPerPage && index < (page + 1) * itemsPerPage) ? 'block' : 'none';
-        });
-    };
+    // Функция для сортировки данных по убыванию популярности
+    function sortDataByPopularity(data) {
+        return data.sort((a, b) => b.popularity - a.popularity);
+    }
 
-    showPage(currentPage); 
+    // Функция для отображения данных
+    function displayItems(data) {
+        data.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('popular-item');
+            itemElement.innerHTML = `
+                <img class="popular__img" src="${item.photo}" alt="${item.title}">
+                <div class="popular__sub">
+                    <h2 class="popular__title">${item.title}</h2>
+                    <p class="popular__text">${item.text}</p>
+                    <p class="popular__address">${item.address}</p>                
+                    <a class="popular__link" href="#">Перейти</a>
+                </div>
+            `;
+            popularItems.appendChild(itemElement);
+        });
+    }
+
+    // Функция для создания кнопки "Показать ещё"
+    function createLoadMoreButton() {
+        const button = document.createElement('button');
+        button.classList.add('pagination__button');
+        button.textContent = 'Показать ещё';
+        button.addEventListener('click', loadMore);
+        popular.appendChild(button);
+    }
+
+    // Функция для удаления кнопки "Показать ещё"
+    function removeLoadMoreButton() {
+        const button = popular.querySelector('.pagination__button');
+        if (button) {
+            button.remove();
+        }
+    }
+
+    // Функция для загрузки дополнительных данных
+    async function loadMore() {
+        if (isLoading) return; // Предотвращаем множественные запросы
+        isLoading = true;
+
+        // Показываем лоадер
+        mask.classList.remove('hide');
+        mask.classList.add('active');
+
+        // Загружаем данные с сервера
+        const data = await fetchData();
+        const sortedData = sortDataByPopularity(data);
+
+        // Определяем индексы для отображения следующих элементов
+        const startIndex = currentPage * loadMoreCount;
+        const endIndex = startIndex + loadMoreCount;
+        const nextItems = sortedData.slice(startIndex, endIndex);
+
+        // Скрываем лоадер
+        mask.classList.remove('active');
+        mask.classList.add('hide');
+
+        if (nextItems.length > 0) {
+            displayItems(nextItems);
+            currentPage++;
+            totalItems += nextItems.length;
+        }
+
+        // Если данные закончились, удаляем кнопку
+        if (endIndex >= sortedData.length) {
+            removeLoadMoreButton();
+        }
+
+        isLoading = false;
+    }
+
+    // Инициализация: загружаем первую страницу
+    const data = await fetchData();
+    const sortedData = sortDataByPopularity(data);
+
+    // Отображаем первые элементы
+    const initialItems = sortedData.slice(0, itemsPerPage);
+    displayItems(initialItems);
+    totalItems = initialItems.length;
+
+    // Если есть больше данных, добавляем кнопку "Показать ещё"
+    if (sortedData.length > itemsPerPage) {
+        createLoadMoreButton();
+    }
 });

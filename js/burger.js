@@ -9,15 +9,15 @@ const burgerController = ({burger, btnOpen, btnClose, time = 300}) => {
     transition: opacity ${time}ms ease-in-out;
   `;
 
-  const openburger = () => {
+  const openBurger = () => {
     burgerElem.style.visibility = 'visible';
     burgerElem.style.opacity = 1;
   };
   buttonElems.forEach(btn => {
-    btn.addEventListener('click', openburger);
+    btn.addEventListener('click', openBurger);
   });
 
-  const closeburger = event => {
+  const closeBurger = event => {
       const target = event.target;
       if (
         target === burgerElem ||
@@ -27,11 +27,11 @@ const burgerController = ({burger, btnOpen, btnClose, time = 300}) => {
         setTimeout(() => {
           burgerElem.style.visibility = 'hidden';
         }, time);
-        window.removeEventListener('keydown', closeburger);
+        window.removeEventListener('keydown', closeBurger);
       }
     }
 
-  burgerElem.addEventListener('click', closeburger);
+  burgerElem.addEventListener('click', closeBurger);
 };
 
 burgerController({

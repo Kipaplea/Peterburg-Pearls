@@ -310,14 +310,18 @@ input{
                 margin-bottom: 70px;
             }
         }
+    
     }
 }
 
 .select{
     display: flex;
     justify-content: center;
-    gap: 245px;
+    gap: 325px;
     margin-bottom: 75px;
+    margin-left: 120px;
+    margin-right: 120px;
+    height: 60px;
     @media(max-width: 1060px) {
         flex-direction: column-reverse;
         gap: 40px;
@@ -340,6 +344,8 @@ input{
             border-bottom: 5px solid #00000000;
             transition: all 0.3s;
             cursor: pointer;
+            height: fit-content;
+            margin: auto;
     
             &:hover{
                 border-bottom: 2px solid #000000;
@@ -352,13 +358,31 @@ input{
     }
 
     &__search{
-        display: block;
-        background-color: #E4E4E4;
-        border: 3px solid #797676;
-        padding: 7px 20px;
-        font-size: 24px;
-        width: 250px;
-        border-radius: 10px;
+        display: flex;
+        gap: 15px;
+
+        &-input{
+            display: block;
+            background-color: #E4E4E4;
+            border: 3px solid #797676;
+            padding: 7px 20px;
+            font-size: 24px;
+            width: 250px;
+            border-radius: 10px;
+            height: fit-content;
+            margin: auto;
+        }
+
+        &-img{
+            cursor: pointer;
+            width: 60px;
+            transition: all 0.2s;
+
+            &:hover{
+                width: 55px;
+                margin: 0 2.5px;
+            }
+        }
         
 
         // @media(max-width: 1060px) {
@@ -421,7 +445,7 @@ input{
         padding: 10px 15px 20px 15px;
         top: -49px;
         margin: 0 auto;
-        background-color: #F1F1F1;
+        background-color: #ededed;
         width: 310px;
         border-radius: 5px;
     }
@@ -453,7 +477,7 @@ input{
     &__link{
         font-size: 16px;
         font-weight: 500;
-        background-color: #D9D9D9;
+        background-color: #d9d9d9;
         padding: 4px 35px;
         margin-bottom: 5px;
         border-radius: 6px;
@@ -466,6 +490,18 @@ input{
         @media(max-width: 1340px) {
             background-color: #000000;
             color: #DCDBDB;
+        }
+
+        &s{
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background-color: darkgray;
+            padding: 15px;
+            border-radius: 7px;
+            position: absolute;
+            top: 870px;
+            margin-right: -80px;
         }
     }
 
@@ -533,6 +569,7 @@ input{
         height: 650px;
         &:hover{
             margin-top: 30px;
+            margin-bottom: 10px;
 
             @media(max-width: 1340px) {
                 margin-top: 40px;
@@ -601,6 +638,13 @@ input{
             background-color: #000000;
             color: #DCDBDB;
         }
+
+        &s{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
     }
 }
 
@@ -664,14 +708,16 @@ input{
     margin-top: 80px;
 
     &__button{
-        margin-left: 40px;
-
-        text-align: center;
+        // margin-left: 40px; 
+        margin-top: 80px;
+        /* margin-bottom: 20px; */
+        /* text-align: center; */
         background-color: #d6d6d6;
-        width: 30px;
+        width: fit-content;
         height: 30px;
         transition: all 0.2s;
-        border-radius: 15%;
+        border-radius: 8px;
+        padding: 5px 35px;
 
         @media (max-width: 911px) {
             margin-left: 25px;
@@ -724,7 +770,6 @@ input{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
     padding-left: 75px;
     padding-right: 75px;
 
@@ -735,32 +780,40 @@ input{
         font-weight: 700;
 
         @media(max-width: 630px) {
-            margin-top: 0px;
+            margin-top: 25px;
             margin-bottom: 10px;
             font-size: 30px;
         }
     }
 
     &__items{
-        background-color: #dcdbdb;
+        background-color: #e6e6e6;
         border-radius: 10px;
         padding: 20px;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-
+    
     &__rate{
         background-color: #c9c8c8;
         padding: 15px;
         border-radius: 10px;
     }
-
+    
     &__name{
         font-weight: 500;
-        border-bottom: 2px dimgray dashed;
+        border-bottom: 3px dimgray dashed;
         width: fit-content;
         padding-bottom: 10px;
         margin-bottom: 10px;
+    }
+
+    &__content{
+        border-left: 3px dimgray solid;
+        padding-left: 10px;
+        margin-top: 15px;
+        padding: 5px 15px;
+        max-width: 900px;
     }
 }
